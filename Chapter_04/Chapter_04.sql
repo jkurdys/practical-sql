@@ -210,3 +210,12 @@ COPY (
      )
 TO 'C:\YourDirectory\us_counties_mill_export.txt'
 WITH (FORMAT CSV, HEADER, DELIMITER '|');
+
+COPY (
+    SELECT geo_name, state_us_abbreviation, housing_unit_count_100_percent
+    FROM us_counties_2010
+    ORDER BY housing_unit_count_100_percent DESC
+	LIMIT 20
+     )
+TO '/Users/Diogenes/Documents/practical-sql/Chapter_04/most_housing_export.csv'
+WITH (FORMAT CSV, HEADER);
